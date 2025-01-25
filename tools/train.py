@@ -5,6 +5,7 @@ import os
 import os.path as osp
 import time
 import warnings
+import sys
 
 import mmcv
 import torch
@@ -12,7 +13,12 @@ import torch.distributed as dist
 from mmcv import Config, DictAction
 from mmcv.runner import get_dist_info, init_dist
 from mmcv.utils import get_git_hash
+# from mmengine.config import Config, DictAction
+# from mmengine.dist import get_dist_info, init_dist
+# from mmengine.utils import get_git_hash
 
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
+sys.path.append(parent_dir)
 from mmdet import __version__
 from mmdet.apis import init_random_seed, set_random_seed, train_detector
 from mmdet.datasets import build_dataset
@@ -20,6 +26,7 @@ from mmdet.models import build_detector
 from mmdet.utils import (collect_env, get_device, get_root_logger,
                          replace_cfg_vals, setup_multi_processes,
                          update_data_root)
+
 from projects import *
 
 
